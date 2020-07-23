@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
     const formData = new FormData(form);
 
     const user = makeUser(formData);
-    console.log(user);
+    // console.log(user);
     const stringyUser = JSON.stringify(user);
     localStorage.setItem('USER', stringyUser);
     
