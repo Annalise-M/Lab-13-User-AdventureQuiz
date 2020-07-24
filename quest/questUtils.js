@@ -1,3 +1,5 @@
+import { getUser, setUser } from '../userUtils.js';
+
 export function renderSection(quest) {
     const section = document.createElement('section');
     const div = document.createElement('div');
@@ -27,8 +29,40 @@ export function renderSection(quest) {
         label.append(labelDiv, input);
         form.append(label);
     }
+
     const button = document.createElement('button');
     button.textContent = 'Submit';
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        const choiceId = formData.get('choices');
+        const results = findById(quest.choices, choiceId);
+        // console.log(results);
+
+        const user = getUser();
+
+        user.gold += results.gold;
+        user.hp += results.hp;
+        user.completed[quest.id] = true;
+
+        setUser(user);
+
+        form.classList.add('hidden');
+        button.classList.add('hidden');
+
+        const resultDiv = document.createElement('div');
+        resultDiv.textContent = results.result;
+
+        const nextButton = document.getElementById('next');
+        nextButton.classList.remove('hidden');
+        section.append(resultDiv, nextButton);
+
+        // window.location = '/map';
+        // add to next button eventlistener
+    });
 
     form.append(button);
     section.append(div, img, form);
