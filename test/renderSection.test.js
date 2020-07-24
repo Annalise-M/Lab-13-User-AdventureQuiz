@@ -70,12 +70,12 @@ test('time to test a function', (expect) => {
                         <input type="radio" value="fight" name="choices">
                     </label>
                     <label>
-                        <div>Run away like good Sir Robin!</div>
+                        <div>Run away like good Sir Robin</div>
                         <input type="radio" value="run" name="choices">
                     </label>
                     <button>Submit</button>
                </form>
-            </section>`;
+            </section>`.replace(/\s/g, '');
 
     //Act 
     // Call the function you're testing and set the result to a const
@@ -83,5 +83,5 @@ test('time to test a function', (expect) => {
 
     //Expect
     // Make assertions about what is expected versus the actual result
-    expect.equal(el.outerHTML, expected);
+    expect.equal(el.outerHTML.replace(/\s/g, ''), expected);
 });
