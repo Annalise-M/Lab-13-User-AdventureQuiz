@@ -45,6 +45,16 @@ section {
     border: solid 2px var(--color1);
 }
 
+.main-section {
+    height: 450px;
+    width: 600px;
+    align-content: center;
+    justify-content: center;
+    background-image: url('../assets/the-playa-2019.jpg');
+    background-repeat: no-repeat;
+ 
+}
+
 label {
     display: block;
 }
